@@ -18,19 +18,25 @@ class UploadPictures{
         return $result;
     }
 }
+require '../Other/Permissions.php';  
+Permissions::checkPermissions(); 
+if((mb_strlen($_FILES['file']['name'], 'UTF-8')) < 1){
+header('Location: ../Views/myProfile.php');die;
+}
 
-require '../Other/Permissions.php';  Permissions::checkPermissions(); 
 $uploadedPictures = new UploadPictures();
 $uploadedPictures->StartUpload("../Save/"); 
 $imageDetails = array();
 $imageDetails['image'] = $_FILES; 
 $imageDetails['imagePath'] = "../Save/"; 
 
+
+
 if($uploadedPictures->AddToDb($imageDetails)){
       $_SESSION['msg_upload'] = 'The image was succesfully uploaded';
 }else{
       $_SESSION['msg_upload'] = 'The image was not uploaded.Please try again!';
      }
-header('Location: ../Views/myProfile.php'); 
+header('Location: ../Views/InfoMyUser.php'); 
 die; 
 

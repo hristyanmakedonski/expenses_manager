@@ -32,7 +32,7 @@ class Registration{
                     $this->Email->setSubject('New Registration Confirmation for '.$data['username']);
                     $this->Email->setContent('You must clik on the link below in order to compleate the registration .  Link :  http://localhost/ExpensesManager/Views/activation.php?u='.$data['username'].'&ac='.$data['activation_code']);
                
-                    if($this->Email->send() !== TRUE){
+                    if($this->Email->send($data) !== TRUE){
                         $msg[] = 'Unfortunately the email was not send to you';
                       //  $this->DeleteUser->Delete($_POST);
                    }else{

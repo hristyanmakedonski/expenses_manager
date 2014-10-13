@@ -40,7 +40,8 @@ class ForumController{
     }
 }
 if($_POST){
-    print_r($_POST);
-    // $forum = new ForumController();
-    // $forum->CreatePost($_POST);
+    
+    $forum = new ForumController();
+    $forum->CreatePost($_POST);
+    header('Location: ../Views/forum.php');die;
 }
