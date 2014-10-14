@@ -1,5 +1,3 @@
- <script src="../Other/js/jquery2.1.js"></script>
-
 <?php 
 $class='Home_page';  
 $sms='Home page';   
